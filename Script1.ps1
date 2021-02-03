@@ -55,13 +55,6 @@ Add-LocalGroupMember -Group "Administrators" -Member $user
 $runkey = "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
 Set-ItemProperty $runkey -Name '!JoinAzureAD' -Value ('c:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe -executionpolicy bypass -File ' + "C:\AzureOnboarding\Script2.ps1")
 
-#import certificate
-Start-Sleep 2
-Import-Certificate -FilePath "$PSScriptRoot\Cisco_Umbrella_Root_CA.Cer" -CertStoreLocation Cert:\LocalMachine\Root
-
-#install Cisco Umbrella
-Start-Sleep -Seconds 2
-msiexec /i $PSScriptRoot\setup.msi /passive 
 
 #unjoin computer from domain
 Start-Sleep -Seconds 7
