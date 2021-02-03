@@ -1,0 +1,1 @@
+PowerShell.exe -executionpolicy bypass -Command "& '%~dpn0.ps1'"
